@@ -4,18 +4,18 @@ import 'package:quizapp_model/utils/sample_questions/sample_questions.dart';
 import 'package:quizapp_model/view/home_page/hpme_page.dart';
 import 'package:quizapp_model/view/question_screen/question_screen.dart';
 
-class ResultScreen extends StatelessWidget {
+class ResultTwo extends StatelessWidget {
   // const ResultScreen({super.key});
 
 // changed
   int count;
   // int? wrongAnswers;
 
-  ResultScreen({required this.count});
+  ResultTwo({required this.count});
 
   @override
   Widget build(BuildContext context) {
-    int totalQn = Questiondb.literaturequestion.length;
+    int totalQn = Questiondb.sportsquestion.length;
     int wrongAnswers = totalQn - count;
 
     // int skippedQuestions = totalQn - (count + wrongAnswers);

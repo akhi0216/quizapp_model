@@ -5,15 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:quizapp_model/utils/color_constant.dart';
 import 'package:quizapp_model/utils/sample_questions/sample_questions.dart';
 import 'package:quizapp_model/view/result_screen/result_screen.dart';
+import 'package:quizapp_model/view/result_two/result_two.dart';
 
-class QuestionScreen extends StatefulWidget {
-  const QuestionScreen({Key? key}) : super(key: key);
+class Questiontwo extends StatefulWidget {
+  const Questiontwo({Key? key}) : super(key: key);
 
   @override
-  State<QuestionScreen> createState() => _QuestionScreenState();
+  State<Questiontwo> createState() => _QuestionScreenState();
 }
 
-class _QuestionScreenState extends State<QuestionScreen> {
+class _QuestionScreenState extends State<Questiontwo> {
   int questionindex = 0;
   int? selectedindex;
   int count = 0;
@@ -28,7 +29,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
           Padding(
             padding: const EdgeInsets.all(15),
             child: Text(
-              "${questionindex + 1}/${Questiondb.literaturequestion.length}",
+              "${questionindex + 1}/${Questiondb.sportsquestion.length}",
               style: TextStyle(
                 color: Colorconstant.mycustomwhite,
                 fontWeight: FontWeight.bold,
@@ -45,7 +46,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
           ),
           // Progress Bar
           LinearProgressIndicator(
-            value: (questionindex + 1) / Questiondb.literaturequestion.length,
+            value: (questionindex + 1) / Questiondb.sportsquestion.length,
             color: Colorconstant.mycustomblue,
             backgroundColor: Colorconstant.mycustomgrey,
           ),
@@ -63,8 +64,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 color: Colorconstant.mycustomgrey,
               ),
               child: Text(
-                Questiondb.literaturequestion[questionindex]["question"]
-                    .toString(),
+                Questiondb.sportsquestion[questionindex]["question"].toString(),
                 style: TextStyle(
                   color: Colorconstant.mycustomwhite,
                   fontSize: 20,
@@ -111,8 +111,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            Questiondb.literaturequestion[questionindex]
-                                    ["options"][index]
+                            Questiondb.sportsquestion[questionindex]["options"]
+                                    [index]
                                 .toString(),
                             style: TextStyle(
                               color: Colorconstant.mycustomwhite,
@@ -137,7 +137,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
             },
             separatorBuilder: (context, optionIndex) => SizedBox(height: 0),
             itemCount:
-                Questiondb.literaturequestion[questionindex]["options"].length,
+                Questiondb.sportsquestion[questionindex]["options"].length,
           ),
 
           SizedBox(
@@ -155,11 +155,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
             onPressed: () {
               if (selectedindex != null &&
                   selectedindex ==
-                      Questiondb.literaturequestion[questionindex]["answer"]) {
+                      Questiondb.sportsquestion[questionindex]["answer"]) {
                 count++;
               }
               selectedindex = null;
-              if (questionindex + 1 < Questiondb.literaturequestion.length) {
+              if (questionindex + 1 < Questiondb.sportsquestion.length) {
                 setState(() {
                   questionindex++;
                 });
@@ -168,7 +168,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ResultScreen(count: count),
+                    builder: (context) => ResultTwo(count: count),
                   ),
                 );
               }
@@ -188,8 +188,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  if (questionindex + 1 <
-                      Questiondb.literaturequestion.length) {
+                  if (questionindex + 1 < Questiondb.sportsquestion.length) {
                     setState(() {
                       questionindex++;
                       selectedindex = null;
@@ -213,12 +212,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
   Color getcolor(int index) {
     if (selectedindex != null &&
-        index == Questiondb.literaturequestion[questionindex]["answer"]) {
+        index == Questiondb.sportsquestion[questionindex]["answer"]) {
       return Colorconstant.mycustomgreen;
     }
     if (selectedindex == index) {
-      if (selectedindex ==
-          Questiondb.literaturequestion[questionindex]["answer"]) {
+      if (selectedindex == Questiondb.sportsquestion[questionindex]["answer"]) {
         return Colorconstant.mycustomgreen;
       } else {
         return Colors.red;

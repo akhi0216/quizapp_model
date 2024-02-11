@@ -4,16 +4,17 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_application_1/view/resultscreen/resultscreen.dart';
 import 'package:quizapp_model/utils/color_constant.dart';
 import 'package:quizapp_model/utils/sample_questions/sample_questions.dart';
+import 'package:quizapp_model/view/result_four/result_four.dart';
 import 'package:quizapp_model/view/result_screen/result_screen.dart';
 
-class QuestionScreen extends StatefulWidget {
-  const QuestionScreen({Key? key}) : super(key: key);
+class QuestionFour extends StatefulWidget {
+  const QuestionFour({Key? key}) : super(key: key);
 
   @override
-  State<QuestionScreen> createState() => _QuestionScreenState();
+  State<QuestionFour> createState() => _QuestionScreenState();
 }
 
-class _QuestionScreenState extends State<QuestionScreen> {
+class _QuestionScreenState extends State<QuestionFour> {
   int questionindex = 0;
   int? selectedindex;
   int count = 0;
@@ -28,7 +29,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
           Padding(
             padding: const EdgeInsets.all(15),
             child: Text(
-              "${questionindex + 1}/${Questiondb.literaturequestion.length}",
+              "${questionindex + 1}/${Questiondb.itquestions.length}",
               style: TextStyle(
                 color: Colorconstant.mycustomwhite,
                 fontWeight: FontWeight.bold,
@@ -45,7 +46,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
           ),
           // Progress Bar
           LinearProgressIndicator(
-            value: (questionindex + 1) / Questiondb.literaturequestion.length,
+            value: (questionindex + 1) / Questiondb.itquestions.length,
             color: Colorconstant.mycustomblue,
             backgroundColor: Colorconstant.mycustomgrey,
           ),
@@ -63,8 +64,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 color: Colorconstant.mycustomgrey,
               ),
               child: Text(
-                Questiondb.literaturequestion[questionindex]["question"]
-                    .toString(),
+                Questiondb.itquestions[questionindex]["question"].toString(),
                 style: TextStyle(
                   color: Colorconstant.mycustomwhite,
                   fontSize: 20,
@@ -111,8 +111,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            Questiondb.literaturequestion[questionindex]
-                                    ["options"][index]
+                            Questiondb.itquestions[questionindex]["options"]
+                                    [index]
                                 .toString(),
                             style: TextStyle(
                               color: Colorconstant.mycustomwhite,
@@ -136,8 +136,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
               );
             },
             separatorBuilder: (context, optionIndex) => SizedBox(height: 0),
-            itemCount:
-                Questiondb.literaturequestion[questionindex]["options"].length,
+            itemCount: Questiondb.itquestions[questionindex]["options"].length,
           ),
 
           SizedBox(
@@ -155,11 +154,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
             onPressed: () {
               if (selectedindex != null &&
                   selectedindex ==
-                      Questiondb.literaturequestion[questionindex]["answer"]) {
+                      Questiondb.itquestions[questionindex]["answer"]) {
                 count++;
               }
               selectedindex = null;
-              if (questionindex + 1 < Questiondb.literaturequestion.length) {
+              if (questionindex + 1 < Questiondb.itquestions.length) {
                 setState(() {
                   questionindex++;
                 });
@@ -168,7 +167,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ResultScreen(count: count),
+                    builder: (context) => ResultFour(count: count),
                   ),
                 );
               }
@@ -188,8 +187,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  if (questionindex + 1 <
-                      Questiondb.literaturequestion.length) {
+                  if (questionindex + 1 < Questiondb.itquestions.length) {
                     setState(() {
                       questionindex++;
                       selectedindex = null;
