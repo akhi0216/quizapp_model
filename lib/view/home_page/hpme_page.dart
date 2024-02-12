@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
             "https://images.pexels.com/photos/132477/pexels-photo-132477.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       },
       {
-        "title": "It",
+        "title": "IT",
         "itemimage":
             "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       },
@@ -70,7 +70,8 @@ class _HomePageState extends State<HomePage> {
                     width: 60,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage('asset/person.png'),
+                          image: NetworkImage(
+                              "https://images.pexels.com/photos/1851164/pexels-photo-1851164.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
                           fit: BoxFit.cover),
                       color: Colors.orange[300],
                       borderRadius: BorderRadius.circular(30),
@@ -119,7 +120,7 @@ class _HomePageState extends State<HomePage> {
                       crossAxisCount: 2, // Adjust as per your needs
                       crossAxisSpacing: 10.0,
                       mainAxisSpacing: 10.0,
-                      mainAxisExtent: 250),
+                      mainAxisExtent: 200),
                   itemBuilder: (BuildContext context, int index) {
                     return InkWell(
                       onTap: () {
@@ -153,38 +154,32 @@ class _HomePageState extends State<HomePage> {
                           );
                         }
                       },
-                      // },
-                      // },
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.network(
-                              homepageList[index]["itemimage"],
-                              fit: BoxFit.fill,
-                            ),
-                            SizedBox(height: 15),
-                            Text(
-                              homepageList[index]["title"],
-                              style:
-                                  TextStyle(color: Colorconstant.mycustomwhite),
-                            ),
-                          ],
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 73, 71, 71),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Image.network(
+                                homepageList[index]["itemimage"],
+                                fit: BoxFit.fill,
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                homepageList[index]["title"],
+                                style: TextStyle(
+                                    color: Colorconstant.mycustomwhite,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-
-                      // child: Padding(
-                      //   padding: const EdgeInsets.all(8.0),
-                      //   child:
-                      // Container(
-                      //   height: 100,
-                      //   width: 100,
-                      //   decoration: BoxDecoration(
-                      //       color: Color.fromARGB(255, 55, 55, 55),
-                      //       borderRadius: BorderRadius.circular(25)),
-                      // ),
-                      // ),
                     );
                   },
                 ),

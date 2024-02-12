@@ -9,16 +9,25 @@ class ResultScreen extends StatelessWidget {
 
 // changed
   int count;
+  int rightanswer;
+  int wronganswer;
+  int skippedcount;
+  int totalqn;
   // int? wrongAnswers;
 
-  ResultScreen({required this.count});
+  ResultScreen(
+      {required this.count,
+      required this.rightanswer,
+      required this.wronganswer,
+      required this.skippedcount,
+      required this.totalqn});
 
   @override
   Widget build(BuildContext context) {
     int totalQn = Questiondb.literaturequestion.length;
     int wrongAnswers = totalQn - count;
 
-    // int skippedQuestions = totalQn - (count + wrongAnswers);
+    // // qworked
     int skippedQuestions = totalQn - count - wrongAnswers;
 
     double percentage = (count / totalQn) * 100;

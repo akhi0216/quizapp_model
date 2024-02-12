@@ -17,6 +17,10 @@ class _QuestionScreenState extends State<QuestionScreen> {
   int questionindex = 0;
   int? selectedindex;
   int count = 0;
+  int rightanswer = 0;
+  int wronganswer = 0;
+  int skippedcount = 0;
+  int totalqn = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -158,6 +162,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
                       Questiondb.literaturequestion[questionindex]["answer"]) {
                 count++;
               }
+              // ch
+              if (selectedindex == null) {
+                skippedcount++;
+              }
+              // ch
               selectedindex = null;
               if (questionindex + 1 < Questiondb.literaturequestion.length) {
                 setState(() {
@@ -168,8 +177,13 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ResultScreen(count: count),
-                  ),
+                      builder: (context) => ResultScreen(
+                            count: count,
+                            rightanswer: rightanswer,
+                            wronganswer: wronganswer,
+                            skippedcount: skippedcount,
+                            totalqn: totalqn,
+                          )),
                 );
               }
             },
@@ -183,29 +197,29 @@ class _QuestionScreenState extends State<QuestionScreen> {
           SizedBox(
             height: 10,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  if (questionindex + 1 <
-                      Questiondb.literaturequestion.length) {
-                    setState(() {
-                      questionindex++;
-                      selectedindex = null;
-                    });
-                  } else {
-                    // Navigator.pushReplacement(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //       builder: (context) => ResultScreen(count: count),
-                    //     ));
-                  }
-                },
-                child: Text("Skip"),
-              ),
-            ],
-          ),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: [
+          //     ElevatedButton(
+          //       onPressed: () {
+          //         if (questionindex + 1 <
+          //             Questiondb.literaturequestion.length) {
+          //           setState(() {
+          //             questionindex++;
+          //             selectedindex = null;
+          //           });
+          //         } else {
+          //           // Navigator.pushReplacement(
+          //           //     context,
+          //           //     MaterialPageRoute(
+          //           //       builder: (context) => ResultScreen(count: count),
+          //           //     ));
+          //         }
+          //       },
+          //       child: Text("Skip"),
+          //     ),
+          //   ],
+          // ),
         ],
       ),
     );
