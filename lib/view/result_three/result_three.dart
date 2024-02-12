@@ -9,9 +9,18 @@ class ResultThree extends StatelessWidget {
 
 // changed
   int count;
+  int rightanswer;
+  int wronganswer;
+  int skippedcount;
+  int totalqn;
   // int? wrongAnswers;
 
-  ResultThree({required this.count});
+  ResultThree(
+      {required this.count,
+      required this.rightanswer,
+      required this.wronganswer,
+      required this.skippedcount,
+      required this.totalqn});
 
   @override
   Widget build(BuildContext context) {

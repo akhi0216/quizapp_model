@@ -18,6 +18,10 @@ class _QuestionScreenState extends State<QuestionFour> {
   int questionindex = 0;
   int? selectedindex;
   int count = 0;
+  int rightanswer = 0;
+  int wronganswer = 0;
+  int skippedcount = 0;
+  int totalqn = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -167,7 +171,12 @@ class _QuestionScreenState extends State<QuestionFour> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ResultFour(count: count),
+                    builder: (context) => ResultScreen(
+                        count: count,
+                        rightanswer: rightanswer,
+                        wronganswer: wronganswer,
+                        skippedcount: skippedcount,
+                        totalqn: totalqn),
                   ),
                 );
               }
